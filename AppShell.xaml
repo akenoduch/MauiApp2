@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiApp2.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiApp2"
+    xmlns:pages="clr-namespace:MauiApp2.Pages"
+    Shell.FlyoutBehavior="Disabled">
+
+    <FlyoutItem>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate pages:Home}"
+            Icon="icons8_home"
+            Route="Home" />
+
+        <ShellContent
+            Title="Responsável"
+            ContentTemplate="{DataTemplate pages:Responsible}"
+            Icon="icons8_guardian"
+            Route="Responsible" />
+
+        <ShellContent
+            Title="Registro"
+            ContentTemplate="{DataTemplate pages:Registry}"
+            Icon="icons8_task"
+            Route="Registry" />
+
+        <FlyoutItem.Effects />
+    </FlyoutItem>
+
+</Shell>

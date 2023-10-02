@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApp2.Pages.Home"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Acesso Rápido">
+    <VerticalStackLayout VerticalOptions="Center">
+        <Image
+            Margin="0,-60,0,0"
+            Aspect="AspectFit"
+            HorizontalOptions="Center"
+            Source="logo_biomessenger.svg"
+            VerticalOptions="Start" />
+
+        <Label
+            Margin="0,-50,0,0"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Dados de acesso semanal do aluno:" />
+
+        <Frame
+            Margin="10"
+            Padding="0"
+            BackgroundColor="Transparent"
+            BorderColor="Black"
+            HasShadow="False"
+            HeightRequest="250">
+            <StackLayout>
+                <Label FontSize="Large" Text="{Binding User.Name}" />
+                <Label Text="{Binding User.Email}" />
+            </StackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+</ContentPage>

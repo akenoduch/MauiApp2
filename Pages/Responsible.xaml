@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApp2.Pages.Responsible"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Acesso do Responsável">
+    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+        <Image
+            Aspect="AspectFill"
+            HorizontalOptions="Center"
+            Opacity="0.16"
+            Source="logo_biomessenger.svg"
+            VerticalOptions="Center" />
+
+        <StackLayout Spacing="20" VerticalOptions="Center">
+            <Button
+                BackgroundColor="{StaticResource Primary}"
+                Clicked="OnAutorizacaoSaidaButtonClicked"
+                Text="Autorização de Saída"
+                WidthRequest="200" />
+            <Button
+                BackgroundColor="{StaticResource Primary}"
+                Clicked="OnHistoricoAcessosButtonClicked"
+                Text="Histórico de Acessos"
+                WidthRequest="200" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
