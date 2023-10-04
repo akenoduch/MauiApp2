@@ -1,5 +1,6 @@
 using Microsoft.Maui.Controls;
 using System;
+using MauiApp2.Services;
 // using System.Net.Http;  // Descomente esta linha quando a API estiver disponível
 // using Newtonsoft.Json;  // Descomente esta linha quando a API estiver disponível
 
@@ -7,9 +8,12 @@ namespace MauiApp2.Pages
 {
     public partial class AutorizacaoSaida : ContentPage
     {
+        public UserInfo User { get; set; }
         public AutorizacaoSaida()
         {
             InitializeComponent();
+            User = UserService.Instance.CurrentUser;
+            BindingContext = this;
             // Adicione um handler para mudanças no CheckBox
             AlunoCheckBox.CheckedChanged += OnCheckBoxChanged;
         }
@@ -29,19 +33,7 @@ namespace MauiApp2.Pages
             {
                 /*
                 // Solicitação POST
-                HttpClient client = new HttpClient();
-                var postData = new StringContent(JsonConvert.SerializeObject(new { Nome = alunoNome }), Encoding.UTF8, "application/json");
-                var response = await client.PostAsync("https://api.com/liberar", postData);
-                if (response.IsSuccessStatusCode)
-                {
-                    await DisplayAlert("Sucesso", $"O aluno {alunoNome} foi liberado com sucesso!", "OK");
-                }
-                else
-                {
-                    await DisplayAlert("Erro", "Ocorreu um erro ao liberar o aluno. Por favor, tente novamente.", "OK");
-                }
                 */
-                // Como a API ainda não está disponível, mostrando uma mensagem de sucesso diretamente
                 await DisplayAlert("Sucesso", $"O aluno {alunoNome} foi liberado com sucesso!", "OK");
             }
             else

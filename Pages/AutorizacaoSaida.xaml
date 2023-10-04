@@ -20,7 +20,10 @@
             <StackLayout Spacing="20">
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <CheckBox x:Name="AlunoCheckBox" />
-                    <Label Text="Aluno 1" VerticalOptions="Center" />
+                    <Label
+                        FontSize="Large"
+                        Text="{Binding User.Name}"
+                        VerticalOptions="Center" />
                 </StackLayout>
 
                 <Button
