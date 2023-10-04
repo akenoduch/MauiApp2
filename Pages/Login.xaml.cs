@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MauiApp2.Pages;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging.Abstractions;
-using SeuProjeto.Services;
+using MauiApp2.Services;
 
 namespace MauiApp2.Pages
 {

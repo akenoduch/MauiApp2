@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace SeuProjeto.Services
+namespace MauiApp2.Services
 {
     public class UserService : INotifyPropertyChanged
     {

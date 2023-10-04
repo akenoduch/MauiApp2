@@ -2,38 +2,66 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public class MockApiService
+namespace MauiApp2.Services
 {
-    private Dictionary<string, UserInfo> _userInfos;
-
-    public MockApiService()
+    public class MockApiService
     {
-        // Inicializar o dicionário com tokens e informações associadas
-        _userInfos = new Dictionary<string, UserInfo>
+        private const int DEFAULT_DAYS = 5;
+        private const int DEFAULT_ENTRY_HOUR = 7;
+        private const int DEFAULT_EXIT_HOUR = 12;
+
+        private readonly Dictionary<string, UserInfo> _userInfos;
+
+        public MockApiService()
         {
-            { "token1", new UserInfo { Name = "User 1", Email = "user1@example.com" } },
-            { "token2", new UserInfo { Name = "User 2", Email = "user2@example.com" } }
-        };
-    }
-
-    public Task<bool> LoginAsync(string loginToken)
-    {
-        bool isValid = _userInfos.ContainsKey(loginToken);
-        return Task.FromResult(isValid);
-    }
-
-    public UserInfo GetUserInfo(string loginToken)
-    {
-        if (_userInfos.TryGetValue(loginToken, out var userInfo))
-        {
-            return userInfo;
+            _userInfos = new Dictionary<string, UserInfo>
+            {
+                { "token1", new UserInfo { Name = "User 1", Email = "user1@example.com", Attendance = GenerateFictitiousAttendance(DateTime.Now.AddDays(-DEFAULT_DAYS), DEFAULT_DAYS) } },
+                { "token2", new UserInfo { Name = "User 2", Email = "user2@example.com", Attendance = GenerateFictitiousAttendance(DateTime.Now.AddDays(-DEFAULT_DAYS), DEFAULT_DAYS) } }
+            };
         }
-        throw new Exception("Token inválido ou usuário não autenticado.");
+
+        private List<AttendanceRecord> GenerateFictitiousAttendance(DateTime startDate, int days)
+        {
+            var attendance = new List<AttendanceRecord>();
+            for (int i = 0; i < days; i++)
+            {
+                attendance.Add(new AttendanceRecord
+                {
+                    Date = startDate.AddDays(i),
+                    EntryTime = startDate.AddDays(i).AddHours(DEFAULT_ENTRY_HOUR),
+                    ExitTime = startDate.AddDays(i).AddHours(DEFAULT_EXIT_HOUR)
+                });
+            }
+            return attendance;
+        }
+
+        public Task<bool> LoginAsync(string loginToken)
+        {
+            return Task.FromResult(_userInfos.ContainsKey(loginToken));
+        }
+
+        public UserInfo GetUserInfo(string loginToken)
+        {
+            if (_userInfos.TryGetValue(loginToken, out var userInfo))
+            {
+                return userInfo;
+            }
+            throw new ArgumentException("Token inválido ou usuário não autenticado.");
+        }
     }
 
-}
-public class UserInfo
-{
-    public string Name { get; set; }
-    public string Email { get; set; }
+    public class AttendanceRecord
+    {
+        public DateTime Date { get; set; }
+        public DateTime EntryTime { get; set; }
+        public DateTime ExitTime { get; set; }
+    }
+
+    public class UserInfo
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public List<AttendanceRecord> Attendance { get; set; }
+    }
 }

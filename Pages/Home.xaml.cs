@@ -1,5 +1,5 @@
 using System.ComponentModel;
-using SeuProjeto.Services;  // Importe o namespace correto aqui
+using MauiApp2.Services;
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
 

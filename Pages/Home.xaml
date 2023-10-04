@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Acesso Rápido">
     <VerticalStackLayout VerticalOptions="Center">
+
         <Image
             Margin="0,-60,0,0"
             Aspect="AspectFit"
@@ -20,16 +21,35 @@
 
         <Frame
             Margin="10"
-            Padding="0"
+            Padding="10"
             BackgroundColor="Transparent"
             BorderColor="Black"
             HasShadow="False"
             HeightRequest="250">
+
             <StackLayout>
                 <Label FontSize="Large" Text="{Binding User.Name}" />
                 <Label Text="{Binding User.Email}" />
-            </StackLayout>
-        </Frame>
 
+                <StackLayout Padding="10" Orientation="Horizontal">
+                    <Label Text="Data" WidthRequest="100" />
+                    <Label Text="Entrada" WidthRequest="60" />
+                    <Label Text="Saída" WidthRequest="60" />
+                </StackLayout>
+
+                <CollectionView ItemsSource="{Binding User.Attendance}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" WidthRequest="100" />
+                                <Label Text="{Binding EntryTime, StringFormat='{0:HH:mm}'}" WidthRequest="60" />
+                                <Label Text="{Binding ExitTime, StringFormat='{0:HH:mm}'}" WidthRequest="60" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+        </Frame>
     </VerticalStackLayout>
 </ContentPage>
