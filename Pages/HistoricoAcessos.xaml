@@ -17,9 +17,20 @@
             HorizontalOptions="Center"
             VerticalOptions="Center">
             <StackLayout Spacing="20">
-                <Label Text="Nome do Responsável:" />
+                <Label Text="{Binding User.Responsible, StringFormat='Responsável: {0}'}" />
 
-                <Label Text="ALUNOS COM HISTÓRICO" />
+                <Label FontSize="Large" Text="{Binding User.Name, StringFormat='Histórico de {0}'}" />
+                <CollectionView ItemsSource="{Binding User.Attendance}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" WidthRequest="100" />
+                                <Label Text="{Binding EntryTime, StringFormat='{0:HH:mm}'}" WidthRequest="60" />
+                                <Label Text="{Binding ExitTime, StringFormat='{0:HH:mm}'}" WidthRequest="60" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
                 <Button Clicked="OnFecharButtonClicked" Text="Fechar" />
             </StackLayout>

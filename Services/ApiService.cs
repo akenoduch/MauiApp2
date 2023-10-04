@@ -16,8 +16,8 @@ namespace MauiApp2.Services
         {
             _userInfos = new Dictionary<string, UserInfo>
             {
-                { "token1", new UserInfo { Name = "User 1", Email = "user1@example.com", Attendance = GenerateFictitiousAttendance(DateTime.Now.AddDays(-DEFAULT_DAYS), DEFAULT_DAYS) } },
-                { "token2", new UserInfo { Name = "User 2", Email = "user2@example.com", Attendance = GenerateFictitiousAttendance(DateTime.Now.AddDays(-DEFAULT_DAYS), DEFAULT_DAYS) } }
+                { "token1", new UserInfo { Name = "User 1", Responsible = "Responsável1", Attendance = GenerateFictitiousAttendance(DateTime.Now.AddDays(-DEFAULT_DAYS), DEFAULT_DAYS) } },
+                { "token2", new UserInfo { Name = "User 2", Responsible = "Responsável2", Attendance = GenerateFictitiousAttendance(DateTime.Now.AddDays(-DEFAULT_DAYS), DEFAULT_DAYS) } }
             };
         }
 
@@ -61,7 +61,7 @@ namespace MauiApp2.Services
     public class UserInfo
     {
         public string Name { get; set; }
-        public string Email { get; set; }
+        public string Responsible { get; set; }
         public List<AttendanceRecord> Attendance { get; set; }
     }
 }

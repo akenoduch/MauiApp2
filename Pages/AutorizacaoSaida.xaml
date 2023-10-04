@@ -18,6 +18,7 @@
             HorizontalOptions="Center"
             VerticalOptions="Center">
             <StackLayout Spacing="20">
+                <Label Text="{Binding User.Responsible, StringFormat='Responsável: {0} autoriza o aluno à sair da escola.'}" />
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <CheckBox x:Name="AlunoCheckBox" />
                     <Label
